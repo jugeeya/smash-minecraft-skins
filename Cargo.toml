@@ -45,5 +45,4 @@ panic = "abort"
 lto = true
 
 [features]
-default = ["renders"]
-renders = ["minecraft_render"]
+default = []
