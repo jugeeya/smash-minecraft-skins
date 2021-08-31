@@ -46,4 +46,4 @@ jobs:
 #         body: >
 #           Beta built off of the latest code in the repository. 
 #         files: >
-#           plugin/*
+#           plugin/* 
