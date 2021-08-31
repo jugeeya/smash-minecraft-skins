@@ -13,15 +13,15 @@ jobs:
       PLUGIN_NAME: minecraft_skins
     runs-on: ubuntu-latest
     container: 
-      image: jugeeya/cargo-skyline:2.1.0
+      image: devkitpro/devkita64:latest
     steps:
     - uses: actions/checkout@v2
     - name: install
       run: |
-        apt update && apt install -y wget gdebi && wget https://github.com/devkitPro/pacman/releases/latest/download/devkitpro-pacman.amd64.deb &&     gdebi -n devkitpro-pacman.amd64.deb &&     rm devkitpro-pacman.amd64.deb &&     yes | dkp-pacman -Scc
+        curl https://sh.rustup.rs -sSf > /tmp/rustup-init.sh     && chmod +x /tmp/rustup-init.sh     && sh /tmp/rustup-init.sh -y     && rm -rf /tmp/rustup-init.sh # buildkit
     - name: install 2
       run: |
-        PATH=$PATH:/opt/devkitpro/tools/bin dkp-pacman -Syyu --noconfirm switch-dev &&     dkp-pacman -S --needed --noconfirm switch-portlibs &&     dkp-pacman -S --needed --noconfirm devkitARM &&     yes | dkp-pacman -Scc
+        ~/.cargo/bin/rustup install stable && ~/.cargo/bin/cargo install cargo-skyline && cargo skyline update-std
     - name: Build release NRO
       run: |
         PATH=$PATH:/root/.cargo/bin:/opt/devkitpro/tools/bin  RUST_BACKTRACE=1 /root/.cargo/bin/cargo-skyline skyline build --release
