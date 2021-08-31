@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: install
       run: |
-        apt update && apt install -y wget && wget https://github.com/devkitPro/pacman/releases/latest/download/devkitpro-pacman.amd64.deb &&     gdebi -n devkitpro-pacman.amd64.deb &&     rm devkitpro-pacman.amd64.deb &&     yes | dkp-pacman -Scc
+        apt update && apt install -y wget gdebi && wget https://github.com/devkitPro/pacman/releases/latest/download/devkitpro-pacman.amd64.deb &&     gdebi -n devkitpro-pacman.amd64.deb &&     rm devkitpro-pacman.amd64.deb &&     yes | dkp-pacman -Scc
     - name: install 2
       run: |
         PATH=$PATH:/opt/devkitpro/tools/bin dkp-pacman -Syyu --noconfirm switch-dev &&     dkp-pacman -S --needed --noconfirm switch-portlibs &&     dkp-pacman -S --needed --noconfirm devkitARM &&     yes | dkp-pacman -Scc
