@@ -31,10 +31,8 @@ percent-encoding = "=2.1.0"
 color-thief = "0.2.1"
 ordered-float = "2.0.0"
 
-minecraft_render = { path = "../smash_minecraft_renders", optional = true }
-
 [patch.crates-io]
-ring = { git = "https://github.com/skyline-rs/ring" }
+ring = { git = "https://github.com/jugeeya/ring" }
 webpki = { git = "https://github.com/skyline-rs/webpki" }
 getrandom = { git = "https://github.com/skyline-rs/getrandom", branch = "0.1" }
 getrandom2 = { git = "https://github.com/skyline-rs/getrandom", branch = "master", package = "getrandom" }
@@ -47,5 +45,4 @@ panic = "abort"
 lto = true
 
 [features]
-default = ["renders"]
-renders = ["minecraft_render"]
+default = []
